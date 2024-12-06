@@ -21,6 +21,6 @@ iptables -t nat -A PREROUTING -p tcp -j CLASH
 #重定向udp流量到本机1053端口
 #iptables -t nat -A CLASH_DNS -p udp -j REDIRECT --to-port 1053
 #抓取本机产生的53端口流量交给clash_dns规则链处理
-# iptables -t nat -I OUTPUT -p udp --dport 53 -j CLASH_DNS
+# iptables -t nat -I OUTPUT -p udp --dport 53 ! -i docker0 -j CLASH_DNS
 #拦截外部upd的53端口流量交给clash_dns规则链处理
-#iptables -t nat -I PREROUTING -p udp --dport 53 -j CLASH_DNS
+#iptables -t nat -I PREROUTING -p udp --dport 53 ! -i docker0 -j CLASH_DNS

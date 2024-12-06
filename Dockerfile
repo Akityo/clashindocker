@@ -10,6 +10,7 @@ RUN apk update && \
 WORKDIR /opt/clash
 COPY clash/  .
 RUN chmod +x *.sh
+RUN chmod +x clash
 
 # 复制 crontab 文件并设置文件权限
 COPY  clash/crontab /var/spool/cron/crontabs/root
